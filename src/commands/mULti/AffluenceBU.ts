@@ -3,8 +3,8 @@ import { BU, Multi } from 'univ-lorraine-api'
 import { Command } from '../../Command'
 
 export const AffluenceBU: Command = {
-  name: 'affluence-bu',
-  description: "Infos sur l'occupation d'une BU",
+  name: 'bu',
+  description: "Affluences en BU",
   type: ApplicationCommandType.ChatInput,
   options: [
     {
@@ -12,7 +12,7 @@ export const AffluenceBU: Command = {
       required: true,
       description: 'Le nom de la BU',
       type: ApplicationCommandOptionType.String,
-      choices: Object.keys(BU).map(name => ({ name, value: BU[name as keyof typeof BU] }))
+      choices: Object.keys(BU).map(name => ({ name: name, value: BU[name as keyof typeof BU] }))
     }
   ],
   run: async (client: Client, interaction: CommandInteraction) => {
@@ -29,11 +29,16 @@ export const AffluenceBU: Command = {
               url: 'https://multi.univ-lorraine.fr/affluences'
             },
             title: `📚 ${affluence.site_name}`,
-            description: "Taux d'occupation de la BU",
+            description: "Affluences en BU",
             fields: [
               {
-                name: 'État actuel:',
+                name: 'État:',
                 value: affluence.current_state.localized_state,
+                inline: true
+              },
+              {
+                name: "Taux d'occupation:",
+                value: `**${affluence.progress}%**`,
                 inline: true
               }
             ],

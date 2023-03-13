@@ -8,7 +8,7 @@ dotenv.config()
 const { U2L_USERNAME, U2L_PASSWORD } = process.env
 
 export const CurrentUser: Command = {
-  name: 'current-user',
+  name: 'user',
   description: 'Utilisateur connecté',
   type: ApplicationCommandType.ChatInput,
   run: async (client: Client, interaction: CommandInteraction) => {
