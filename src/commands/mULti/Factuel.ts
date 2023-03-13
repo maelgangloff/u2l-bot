@@ -18,7 +18,7 @@ export const Factuel: Command = {
   ],
   run: async (client: Client, interaction: CommandInteraction) => {
     try {
-      const length = interaction.options.get('nombre')?.value as number | undefined
+      const length = (interaction.options.get('nombre')?.value ?? 5) as number
 
       const news = await Multi.getFactuel()
       await interaction.followUp({
