@@ -17,7 +17,7 @@ export const Factuel: Command = {
   ],
   run: async (client: Client, interaction: CommandInteraction) => {
     try {
-      const length = (interaction.options.get('nombre')?.value ?? 5) as number
+      const length = (interaction.options.get('nombre')?.value ?? 3) as number
 
       const news = await Multi.getFactuel()
       await interaction.followUp({
@@ -39,10 +39,10 @@ export const Factuel: Command = {
           })
         ]
       })
-    } catch (e) {
+    } catch (e: any) {
       return await interaction.followUp({
         ephemeral: true,
-        content: '❌ Erreur...'
+        content: '❌ ' + e.message ?? 'Erreur'
       })
     }
   }

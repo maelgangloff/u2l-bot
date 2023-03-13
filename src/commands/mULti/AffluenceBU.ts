@@ -22,7 +22,7 @@ export const AffluenceBU: Command = {
       await interaction.followUp({
         embeds: [
           new EmbedBuilder({
-            color: 0x0099FF,
+            color: 0x52adc4,
             author: {
               name: 'mULti',
               icon_url: 'https://multi.univ-lorraine.fr/img/affluences.png',
@@ -32,13 +32,13 @@ export const AffluenceBU: Command = {
             description: 'Affluences en BU',
             fields: [
               {
-                name: 'État:',
-                value: affluence.current_state.localized_state,
+                name: "Taux d'occupation:",
+                value: affluence.progress !== -1 ? `**${affluence.progress}%**` : '**Indisponible**',
                 inline: true
               },
               {
-                name: "Taux d'occupation:",
-                value: `**${affluence.progress}%**`,
+                name: 'État:',
+                value: affluence.current_state.localized_state,
                 inline: true
               }
             ],
@@ -49,10 +49,10 @@ export const AffluenceBU: Command = {
           })
         ]
       })
-    } catch (e) {
+    } catch (e: any) {
       await interaction.followUp({
         ephemeral: true,
-        content: '❌ Erreur...'
+        content: '❌ ' + e.message ?? 'Erreur'
       })
     }
   }

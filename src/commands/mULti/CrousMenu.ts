@@ -54,7 +54,7 @@ export const CrousMenu: Command = {
 
       await interaction.followUp({
         embeds: [new EmbedBuilder({
-          color: 0x0099FF,
+          color: 0xe4010b,
           author: {
             name: 'mULti',
             icon_url: 'https://multi.univ-lorraine.fr/img/crous.png',
@@ -75,7 +75,7 @@ export const CrousMenu: Command = {
     } catch (e: any) {
       await interaction.followUp({
         ephemeral: true,
-        content: '❌ ' + e.message ?? 'Erreur inconnue'
+        content: '❌ ' + e.message ?? 'Erreur'
       })
     }
   }

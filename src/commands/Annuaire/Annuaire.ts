@@ -1,4 +1,4 @@
-import { CommandInteraction, Client, ApplicationCommandType, EmbedBuilder, ApplicationCommandOptionType, Attachment } from 'discord.js'
+import { CommandInteraction, Client, ApplicationCommandType, EmbedBuilder, ApplicationCommandOptionType } from 'discord.js'
 import { Command } from '../../Command'
 import { Annuaire, decryptData, Item } from 'univ-lorraine-api'
 
@@ -27,53 +27,49 @@ export const AnnuaireCommand: Command = {
 
       const results = await Annuaire.getLdapSearch(valeur, undefined, withVac)
       const items = results.items as Item[]
+      if (items.length === 0) throw new Error('Aucune personne ne correspond à ces critères de recherche.')
       const activite = items.length === 1 ? await Annuaire.getActivite(items[0].empid) : null
       const photo = items.length === 1 ? (await Annuaire.getPhoto(items[0].empid)).url : null
 
       await interaction.followUp({
         embeds: [
           new EmbedBuilder({
-            color: 0x0099FF,
+            color: 0xa578b2,
             author: {
               name: 'Annuaire',
               icon_url: 'https://multi.univ-lorraine.fr/img/annuaire.png',
-              url: 'https://annuaire-web.univ-lorraine.fr/'
+              url: 'https://annuaire-web.univ-lorraine.fr'
             },
-            title: '📖 Annuaire',
+            title: '📖 ' + (items.length === 1 ? items[0].displayName : 'Annuaire'),
             description: "L'annuaire de l'Université de Lorraine",
             fields: items.length === 1
               ? [
                   {
-                    name: 'Nom',
-                    value: items[0].displayName,
-                    inline: true
-                  },
-                  {
                     name: 'Courriel',
-                    value: decryptData(items[0].mail) ?? 'Pas de courriel',
+                    value: decryptData(items[0].mail) ?? '',
                     inline: true
                   },
                   {
                     name: 'Téléphone',
-                    value: decryptData(items[0].telephone) ?? 'Pas de téléphone',
+                    value: decryptData(items[0].telephone) ?? '',
                     inline: true
                   },
                   {
                     name: 'Fonction',
-                    value: items[0].bcShortLabel,
+                    value: items[0].bcShortLabel ?? '',
                     inline: true
                   },
                   {
                     name: 'Affectation',
-                    value: items[0].affectation,
+                    value: items[0].affectation ?? '',
                     inline: true
                   },
                   {
-                    name: 'Activité principale',
-                    value: activite?.text ?? '---',
+                    name: 'Statut',
+                    value: activite?.text ?? '',
                     inline: true
                   }
-                ]
+                ].filter(f => f.value !== '')
               : items.map(item => ({
                 name: item.displayName,
                 value: item.affectation
@@ -102,7 +98,7 @@ export const AnnuaireCommand: Command = {
     } catch (e: any) {
       return await interaction.followUp({
         ephemeral: true,
-        content: '❌ Erreur...' + e.message
+        content: '❌ ' + e.message ?? 'Erreur'
       })
     }
   }
