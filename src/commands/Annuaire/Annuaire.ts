@@ -82,18 +82,22 @@ export const AnnuaireCommand: Command = {
             footer: {
               text: 'Source: annuaire-web.univ-lorraine.fr'
             },
-            thumbnail: photo ? {
-              url: 'attachment://photo.jpg'
-            } : undefined,
+            thumbnail: photo
+              ? {
+                  url: 'attachment://photo.jpg'
+                }
+              : undefined,
             timestamp: new Date()
           })
         ],
-        files: photo ? [
-          {
-            attachment: Buffer.from(photo.split(',')[1] as string, 'base64'),
-            name: 'photo.jpg',
-          }
-        ] : []
+        files: photo
+          ? [
+              {
+                attachment: Buffer.from(photo.split(',')[1] as string, 'base64'),
+                name: 'photo.jpg'
+              }
+            ]
+          : []
       })
     } catch (e: any) {
       return await interaction.followUp({
