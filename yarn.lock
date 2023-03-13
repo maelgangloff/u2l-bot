@@ -2038,10 +2038,10 @@ undici@^5.13.0:
   dependencies:
     busboy "^1.6.0"
 
-univ-lorraine-api@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/univ-lorraine-api/-/univ-lorraine-api-0.0.4.tgz#e3f38b2eac6fd920397af759e4af4bb860738740"
-  integrity sha512-tTqHTs9zJGrOXstrL9zM8VcCzcauyH1k7FkxFotPMQSE7OUmIJStKad/wxz6C+NBkzlL3jyNGhGNi6bnbSgIyA==
+univ-lorraine-api@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/univ-lorraine-api/-/univ-lorraine-api-0.0.6.tgz#ca50d6f6225e4209e88a32f97ba173217c53d1e9"
+  integrity sha512-QBf10RuxSzd1IBkFS8y3mPQnRdAO7y7qiXVjqM7EE9rdyyAVn1PW37uF6l9cT6ovo1qzEpcJ6bO4X4ICBdig2Q==
   dependencies:
     axios "^1.3.4"
     fast-xml-parser "^4.0.12"
