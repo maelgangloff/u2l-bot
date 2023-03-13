@@ -4,7 +4,7 @@ import { Command } from '../../Command'
 
 export const AffluenceBU: Command = {
   name: 'bu',
-  description: "Affluences en BU",
+  description: 'Affluences en BU',
   type: ApplicationCommandType.ChatInput,
   options: [
     {
@@ -12,7 +12,7 @@ export const AffluenceBU: Command = {
       required: true,
       description: 'Le nom de la BU',
       type: ApplicationCommandOptionType.String,
-      choices: Object.keys(BU).map(name => ({ name: name, value: BU[name as keyof typeof BU] }))
+      choices: Object.keys(BU).map(name => ({ name, value: BU[name as keyof typeof BU] }))
     }
   ],
   run: async (client: Client, interaction: CommandInteraction) => {
@@ -29,7 +29,7 @@ export const AffluenceBU: Command = {
               url: 'https://multi.univ-lorraine.fr/affluences'
             },
             title: `📚 ${affluence.site_name}`,
-            description: "Affluences en BU",
+            description: 'Affluences en BU',
             fields: [
               {
                 name: 'État:',

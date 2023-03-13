@@ -42,7 +42,7 @@ export const CrousMenu: Command = {
     try {
       const ru = interaction.options.get('ru')?.value
       const date = new Date((interaction.options.get('date')?.value ?? Date.now()) as string|number)
-      const time = (interaction.options.get('time')?.value ?? (new Date().getHours() <= 14 ? 'MIDI' : 'SOIR' )) as string
+      const time = (interaction.options.get('time')?.value ?? (new Date().getHours() <= 14 ? 'MIDI' : 'SOIR')) as string
 
       const resto = (await Multi.getCROUSmenu()).find(resto => resto.title === ru)
       if (!resto) throw new Error("Ce RU n'existe pas.")

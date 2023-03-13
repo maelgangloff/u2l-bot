@@ -2,7 +2,6 @@ import { CommandInteraction, Client, ApplicationCommandType, EmbedBuilder, Appli
 import { Command } from '../../Command'
 import { Multi } from 'univ-lorraine-api'
 
-
 export const Factuel: Command = {
   name: 'factuel',
   description: "L'info de l'Université de Lorraine",
@@ -30,9 +29,9 @@ export const Factuel: Command = {
               icon_url: 'https://multi.univ-lorraine.fr/img/ul-logo-mini.png',
               url: 'https://multi.univ-lorraine.fr/home'
             },
-            title: `🔔 FactUeL`,
+            title: '🔔 FactUeL',
             description: "L'info de l'Université de Lorraine",
-            fields: news.map(n => ({name: n.title, value: `${n.description} | ${n.date.split('T')[0]}`})).slice(0, length),
+            fields: news.map(n => ({ name: n.title, value: `${n.description} | ${n.date.split('T')[0]}` })).slice(0, length),
             footer: {
               text: 'Source: multi.univ-lorraine.fr'
             },
