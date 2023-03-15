@@ -15,7 +15,7 @@ export const AnnuaireCommand: Command = {
     },
     {
       name: 'vacataire',
-      description: 'Inclure les vacataires',
+      description: 'Rechercher un vacataire',
       type: ApplicationCommandOptionType.Boolean,
       required: false
     }
@@ -69,10 +69,10 @@ export const AnnuaireCommand: Command = {
                     value: activite?.text ?? '',
                     inline: true
                   }
-                ].filter(f => f.value !== '')
+                ].filter(f => f.value !== '' && f.value !== null)
               : items.map(item => ({
                 name: item.displayName,
-                value: item.affectation
+                value: item.affectation ?? ''
               })),
             url: items.length === 1 ? decryptData(items[0].urlLink) ?? '' : '',
             footer: {
