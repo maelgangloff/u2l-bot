@@ -40,7 +40,7 @@ export const ProchainsPassages: Command = {
               icon_url: 'https://www.reseau-stan.com/fileadmin/user_upload/store-icon.png',
               url: 'https://www.reseau-stan.com'
             },
-            title: '🚌 ' + arret.libelle,
+            title: '🚌 ' + arret.libelle + ' | Ligne ' + ligne.numlignepublic,
             description: 'Les prochains passages du réseau de transport STAN',
             fields: (await Stan.getProchainsPassages(arret as any)).map(passage => ({
               name: passage.direction,
