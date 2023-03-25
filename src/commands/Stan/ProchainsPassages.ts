@@ -44,7 +44,7 @@ export const ProchainsPassages: Command = {
             description: 'Les prochains passages du réseau de transport STAN',
             fields: (await Stan.getProchainsPassages(arret as any)).map(passage => ({
               name: passage.direction,
-              value: `Temps: ${Math.trunc(passage.temps_min / 60) === 0 ? '' : (Math.trunc(passage.temps_min / 60) + ' H')}${passage.temps_min % 60} min`
+              value: `Temps: **${Math.trunc(passage.temps_min / 60) === 0 ? '' : (Math.trunc(passage.temps_min / 60) + ' H')}${passage.temps_min % 60} min**`
             })),
             thumbnail: {
               url: 'https://www.reseau-stan.com/typo3conf/ext/kg_package/Resources/Public/images/pictolignes/' + ligne.numlignepublic + '.png'
