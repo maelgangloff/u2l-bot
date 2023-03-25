@@ -1,6 +1,6 @@
 {
   "name": "u2l-bot",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Un bot Discord qui s'interface avec les API de l'UL",
   "main": "dist/index.js",
   "author": "Maël Gangloff <contact@maelgangloff.fr>",
@@ -20,6 +20,7 @@
   "dependencies": {
     "discord.js": "^14.7.1",
     "dotenv": "^16.0.3",
+    "stan-api": "^1.1.0",
     "univ-lorraine-api": "^0.0.6"
   }
 }
