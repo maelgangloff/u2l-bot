@@ -1,6 +1,7 @@
 import { CommandInteraction, Client, ApplicationCommandType, EmbedBuilder, ApplicationCommandOptionType } from 'discord.js'
 import { Command } from '../../Command'
 import { Stan } from 'stan-api'
+import { Passage } from 'stan-api/types/Ligne/Passage'
 
 export const ProchainsPassages: Command = {
   name: 'stan',
@@ -38,30 +39,35 @@ export const ProchainsPassages: Command = {
       const arret = (await Stan.getArrets(ligne)).find(a => a.libelle.toLowerCase().includes(nomArret.toLowerCase()))
       if (!arret) throw new Error("Aucun arrêt correspondant n'a été trouvé.")
 
+      const passages = (await Stan.getProchainsPassages(autresPassages ? ({osmid: arret.osmid}) : arret)).sort((p1, p2) => p1.temps_min-p2.temps_min).reduce((rv: any, x) => {
+        const ligne = x.arret.ligne?.numlignepublic as string
+        (rv[ligne] = rv[ligne] || []).push(x)
+        return rv
+      }, {}) as {[key: string]: Passage[]}
+
+
       await interaction.followUp({
-        embeds: [
-          new EmbedBuilder({
-            color: 0x00aeca,
-            author: {
-              name: 'Stan',
-              icon_url: 'https://www.reseau-stan.com/fileadmin/user_upload/store-icon.png',
-              url: 'https://www.reseau-stan.com'
-            },
-            title: '🚏 ' + arret.libelle + (!autresPassages ? (' | Ligne ' + ligne.numlignepublic) : ''),
-            description: 'Les prochains passages du réseau de transport STAN',
-            fields: (await Stan.getProchainsPassages(autresPassages ? ({osmid: arret.osmid}) : arret)).sort((p1, p2) => p1.temps_min-p2.temps_min).map(passage => ({
-              name: `${passage.temps_min === 0 ? '🚍' : (passage.arret.ligne?.numlignepublic === 'T3' ? '🚎' : '🚌')} Ligne ${passage.arret.ligne?.numlignepublic} >> ${passage.direction}`,
-              value: passage.temps_min === 0 ? '**Arrivée imminente**' : `Temps: **${Math.trunc(passage.temps_min / 60) === 0 ? '' : (Math.trunc(passage.temps_min / 60) + ' h ')}${passage.temps_min % 60} min${passage.temps_theorique ? ' (théorique)' : ''}**`
-            })),
-            thumbnail: {
-              url: !autresPassages ? ('https://www.reseau-stan.com/typo3conf/ext/kg_package/Resources/Public/images/pictolignes/' + ligne.numlignepublic + '.png') : 'https://www.reseau-stan.com/typo3conf/ext/kg_package/Resources/Public/images/stan.png'
-            },
-            footer: {
-              text: 'Source: www.reseau-stan.com'
-            },
-            timestamp: new Date()
-          })
-        ]
+        embeds: await Promise.all(Object.entries(passages).map(async ([key, val]) => new EmbedBuilder({
+          color: 0x00aeca,
+          author: {
+            name: 'Stan',
+            icon_url: 'https://www.reseau-stan.com/fileadmin/user_upload/store-icon.png',
+            url: 'https://www.reseau-stan.com'
+          },
+          title: '🚏 ' + arret.libelle + ' | Ligne ' + key,
+          description: 'Les prochains passages du réseau de transport STAN',
+          fields: val.map(passage => ({
+            name: `${passage.temps_min === 0 ? '🚍' : (passage.arret.ligne?.numlignepublic === 'T3' ? '🚎' : '🚌')} Ligne ${passage.arret.ligne?.numlignepublic} >> ${passage.direction}`,
+            value: passage.temps_min === 0 ? '**Arrivée imminente**' : `Temps: **${Math.trunc(passage.temps_min / 60) === 0 ? '' : (Math.trunc(passage.temps_min / 60) + ' h ')}${passage.temps_min % 60} min${passage.temps_theorique ? ' (théorique)' : ''}**`
+          })),
+          thumbnail: {
+            url: 'https://www.reseau-stan.com/typo3conf/ext/kg_package/Resources/Public/images/pictolignes/' + key + '.png'
+          },
+          footer: {
+            text: 'Source: www.reseau-stan.com'
+          },
+          timestamp: new Date()
+        })))
       })
     } catch (e: any) {
       return await interaction.followUp({
