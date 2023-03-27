@@ -49,7 +49,7 @@ export const ProchainsPassages: Command = {
             },
             title: '🚏 ' + arret.libelle + (!autresPassages ? (' | Ligne ' + ligne.numlignepublic) : ''),
             description: 'Les prochains passages du réseau de transport STAN',
-            fields: (await Stan.getProchainsPassages(autresPassages ? {osmid: arret.osmid} : arret)).map(passage => ({
+            fields: (await Stan.getProchainsPassages(autresPassages ? {osmid: arret.osmid} : arret)).sort((p1, p2) => p1.temps_min-p2.temps_min).map(passage => ({
               name: `${passage.temps_min === 0 ? '🚍' : (passage.arret.ligne?.numlignepublic === 'T3' ? '🚎' : '🚌')} Ligne ${passage.arret.ligne?.numlignepublic} >> ${passage.direction}`,
               value: passage.temps_min === 0 ? '**Arrivée imminente**' : `Temps: **${Math.trunc(passage.temps_min / 60) === 0 ? '' : (Math.trunc(passage.temps_min / 60) + ' h ')}${passage.temps_min % 60} min${passage.temps_theorique ? ' (théorique)' : ''}**`
             })),
