@@ -20,7 +20,7 @@
   "dependencies": {
     "discord.js": "^14.7.1",
     "dotenv": "^16.0.3",
-    "stan-api": "^1.1.1",
+    "stan-api": "^1.1.2",
     "univ-lorraine-api": "^0.0.6"
   }
 }

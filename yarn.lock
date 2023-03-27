@@ -1839,10 +1839,10 @@ slash@^3.0.0:
   resolved "https://registry.yarnpkg.com/slash/-/slash-3.0.0.tgz#6539be870c165adbd5240220dbe361f1bc4d4634"
   integrity sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
 
-stan-api@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/stan-api/-/stan-api-1.1.1.tgz#bdc10cb0673c91f363544481c939dedbc62c2f27"
-  integrity sha512-VNZ+f+gEGN+hRfKQzglwEH4o5zUN+V8Qc0q5EZmmQsLxah2z4f5AoErPMiJLk3Nf6qczsHdep/6/XkupEjEBCQ==
+stan-api@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/stan-api/-/stan-api-1.1.2.tgz#466f9be3197414a7015a3046e77986597b52a1e5"
+  integrity sha512-0nZvGrWiDoz29DTD5RRkWel2F6bdbJ79PEbDqSa2gjRNG2JQD+wb+FWLoHIuoMXSD7nHdcJjwy9r3/741ZssJw==
   dependencies:
     axios "^0.27.2"
     qs "^6.11.0"
