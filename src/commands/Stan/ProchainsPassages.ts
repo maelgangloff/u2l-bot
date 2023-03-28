@@ -28,7 +28,7 @@ export const ProchainsPassages: Command = {
       const nomArret = interaction.options.get('arret')?.value as string
 
       let arret: (Partial<Arret> & {osmid: string, libelle: string}) | undefined
-      if(nomLigne) {
+      if(nomLigne !== undefined) {
         const ligne = (await Stan.getLignes()).find(l => l.numlignepublic.trim().toLowerCase() === nomLigne.trim().toLowerCase())
         if (!ligne) throw new Error("Aucune ligne correspondante n'a été trouvée.")
 
