@@ -40,7 +40,7 @@ export const ProchainsPassages: Command = {
       }
       if (!arret) throw new Error("Aucun arrêt correspondant n'a été trouvé.")
 
-      arret = arret.osmid.startsWith('stop_area') ? { ...arret, osmid: arret.osmid.replace('stop_area', 'stop_point').replace(':SA:', ':SP:') } : arret
+      arret = arret.osmid.startsWith('stop_area') ? { ...arret, osmid: arret.osmid.replace('stop_area:GST:SA:', 'stop_point:GST:SP:') } : arret
 
       const passages = (await Stan.getProchainsPassages(arret)).sort((p1, p2) => p1.temps_min - p2.temps_min).reduce((rv: {[key: string]: Passage[]}, p: Passage) => {
         const ligne = p.arret.ligne?.numlignepublic as string
