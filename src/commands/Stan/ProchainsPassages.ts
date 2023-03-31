@@ -28,28 +28,27 @@ export const ProchainsPassages: Command = {
       const nomArret = interaction.options.get('arret')?.value as string
 
       let arret: (Partial<Arret> & {osmid: string, libelle: string}) | undefined
-      if(nomLigne !== undefined) {
+      if (nomLigne !== undefined) {
         const ligne = (await Stan.getLignes()).find(l => l.numlignepublic.trim().toLowerCase() === nomLigne.trim().toLowerCase())
         if (!ligne) throw new Error("Aucune ligne correspondante n'a été trouvée.")
 
         arret = (await Stan.getArrets(ligne)).find(a => a.libelle.toLowerCase().includes(nomArret.toLowerCase()))
-
       } else {
         const arrets = await Stan.getArretOsmid(nomArret)
-        if(!arrets.length) throw new Error("Pas de résultat pour cette recherche.")
+        if (!arrets.length) throw new Error('Pas de résultat pour cette recherche.')
         arret = arrets[0]
       }
       if (!arret) throw new Error("Aucun arrêt correspondant n'a été trouvé.")
 
-      arret = arret.osmid.startsWith('stop_area') ? {...arret, osmid: arret.osmid.replace('stop_area', 'stop_point').replace(':SA:', ':SP:')} : arret
+      arret = arret.osmid.startsWith('stop_area') ? { ...arret, osmid: arret.osmid.replace('stop_area', 'stop_point').replace(':SA:', ':SP:') } : arret
 
-      const passages = (await Stan.getProchainsPassages(arret)).sort((p1, p2) => p1.temps_min-p2.temps_min).reduce((rv: {[key: string]: Passage[]}, p: Passage) => {
+      const passages = (await Stan.getProchainsPassages(arret)).sort((p1, p2) => p1.temps_min - p2.temps_min).reduce((rv: {[key: string]: Passage[]}, p: Passage) => {
         const ligne = p.arret.ligne?.numlignepublic as string
         (rv[ligne] = rv[ligne] || []).push(p)
         return rv
       }, {}) as {[key: string]: Passage[]}
 
-      if(Object.keys(passages).length === 0) throw new Error("Aucun prochain passage n'est prévu.")
+      if (Object.keys(passages).length === 0) throw new Error("Aucun prochain passage n'est prévu.")
 
       await interaction.followUp({
         embeds: await Promise.all(Object.entries(passages).map(async ([key, val]) => new EmbedBuilder({
