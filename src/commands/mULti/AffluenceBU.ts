@@ -19,7 +19,7 @@ export const AffluenceBU: Command = {
     try {
       const bu = interaction.options.get('bu')?.value as BU
       const affluence = await Multi.getAffluenceBU(bu)
-      await interaction.followUp({
+      await interaction.reply({
         embeds: [
           new EmbedBuilder({
             color: 0x52adc4,
@@ -50,7 +50,7 @@ export const AffluenceBU: Command = {
         ]
       })
     } catch (e: any) {
-      await interaction.followUp({
+      await interaction.reply({
         ephemeral: true,
         content: '❌ ' + e.message ?? 'Erreur'
       })

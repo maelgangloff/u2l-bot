@@ -52,7 +52,7 @@ export const CrousMenu: Command = {
       const meal = menu.meal.find(meal => meal.name.toUpperCase() === time)
       if (!meal) throw new Error(`Pas de menu disponible pour le ${time.toLowerCase()}.`)
 
-      await interaction.followUp({
+      await interaction.reply({
         embeds: [new EmbedBuilder({
           color: 0xe4010b,
           author: {
@@ -73,7 +73,7 @@ export const CrousMenu: Command = {
         })]
       })
     } catch (e: any) {
-      await interaction.followUp({
+      await interaction.reply({
         ephemeral: true,
         content: '❌ ' + e.message ?? 'Erreur'
       })

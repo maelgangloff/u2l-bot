@@ -50,7 +50,7 @@ export const ProchainsPassages: Command = {
 
       if (Object.keys(passages).length === 0) throw new Error("Aucun prochain passage n'est prévu.")
 
-      await interaction.followUp({
+      await interaction.reply({
         embeds: await Promise.all(Object.entries(passages).map(async ([key, val]) => new EmbedBuilder({
           color: 0x03bacf,
           author: {
@@ -74,7 +74,7 @@ export const ProchainsPassages: Command = {
         })))
       })
     } catch (e: any) {
-      return await interaction.followUp({
+      return await interaction.reply({
         ephemeral: true,
         content: '❌ ' + e.message ?? 'Erreur'
       })

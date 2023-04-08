@@ -20,7 +20,7 @@ export const Factuel: Command = {
       const length = (interaction.options.get('nombre')?.value ?? 3) as number
 
       const news = await Multi.getFactuel()
-      await interaction.followUp({
+      await interaction.reply({
         embeds: [
           new EmbedBuilder({
             color: 0x0099FF,
@@ -40,7 +40,7 @@ export const Factuel: Command = {
         ]
       })
     } catch (e: any) {
-      return await interaction.followUp({
+      return await interaction.reply({
         ephemeral: true,
         content: '❌ ' + e.message ?? 'Erreur'
       })

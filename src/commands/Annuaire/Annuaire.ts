@@ -31,7 +31,7 @@ export const AnnuaireCommand: Command = {
       const activite = items.length === 1 ? await Annuaire.getActivite(items[0].empid) : null
       const photo = items.length === 1 ? (await Annuaire.getPhoto(items[0].empid)).url : null
 
-      await interaction.followUp({
+      await interaction.reply({
         embeds: [
           new EmbedBuilder({
             color: 0xa578b2,
@@ -96,7 +96,7 @@ export const AnnuaireCommand: Command = {
           : []
       })
     } catch (e: any) {
-      return await interaction.followUp({
+      return await interaction.reply({
         ephemeral: true,
         content: '❌ ' + e.message ?? 'Erreur'
       })

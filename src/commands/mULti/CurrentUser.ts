@@ -15,12 +15,12 @@ export const CurrentUser: Command = {
     try {
       const service = Service.MULTI
       const user = await Utilisateur.serviceValidate(service, await new Utilisateur(U2L_USERNAME ?? '', U2L_PASSWORD ?? '').getTicket(service))
-      await interaction.followUp({
+      await interaction.reply({
         ephemeral: false,
         content: `Connecté en tant que: **${user['cas:attributes']['cas:displayname']} <${user['cas:attributes']['cas:mail']}>**`
       })
     } catch (e) {
-      return await interaction.followUp({
+      return await interaction.reply({
         ephemeral: true,
         content: '❌ Erreur...'
       })
