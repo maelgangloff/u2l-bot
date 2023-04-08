@@ -1,9 +1,8 @@
 # U2L Bot
 
-Ce bot Discord permet l'accès aux données fournies par certaines API (de l'Université de Lorraine et autres):
-- Prochains passages du réseau de transport STAN
-- Taux d'occupation des Bibliothèques Universitaires
-- Menu des Restos U'
-- Recherche dans l'Annuaire
-- Flash infos (FactUeL)
-
+Ce bot Discord permet l'accès aux données fournies par certaines API.
+Les slash commands disponibles sont:
+- **/bu**: Affluence des Bibliothèques Universitaires 📚
+- **/ru**: Menus des Résto U' du Crous Lorraine 🍔
+- **/annuaire**: Infos sur un personnel dans l'Annuaire 📖
+- **/stan**: Prochains passages du réseau Stan 🚌
