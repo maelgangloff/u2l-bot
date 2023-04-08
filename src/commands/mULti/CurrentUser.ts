@@ -20,7 +20,7 @@ export const CurrentUser: Command = {
         content: `Connecté en tant que: **${user['cas:attributes']['cas:displayname']} <${user['cas:attributes']['cas:mail']}>**`
       })
     } catch (e) {
-      return await interaction.followUp({
+      return await interaction.reply({
         ephemeral: true,
         content: '❌ Erreur...'
       })

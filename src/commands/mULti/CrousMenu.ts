@@ -63,7 +63,7 @@ export const CrousMenu: Command = {
           thumbnail: {
             url: resto.thumbnail_url
           },
-          title: `${resto.title} | ${date.toLocaleDateString('fr')} le ${meal.name.toUpperCase()}`,
+          title: `:tropical_drink: ${resto.title} | ${date.toLocaleDateString('fr')} le ${meal.name.toUpperCase()}`,
           description: resto.short_desc,
           fields: meal.foodcategory.map(fc => ({ name: fc.name, value: fc.dishes.map(d => d.name).join(' - ') })),
           footer: {
@@ -73,7 +73,7 @@ export const CrousMenu: Command = {
         })]
       })
     } catch (e: any) {
-      await interaction.followUp({
+      await interaction.reply({
         ephemeral: true,
         content: '❌ ' + e.message ?? 'Erreur'
       })

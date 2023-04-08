@@ -96,7 +96,7 @@ export const AnnuaireCommand: Command = {
           : []
       })
     } catch (e: any) {
-      return await interaction.followUp({
+      return await interaction.reply({
         ephemeral: true,
         content: '❌ ' + e.message ?? 'Erreur'
       })
