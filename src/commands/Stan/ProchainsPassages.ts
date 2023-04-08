@@ -74,7 +74,7 @@ export const ProchainsPassages: Command = {
         })))
       })
     } catch (e: any) {
-      return await interaction.reply({
+      return await interaction.followUp({
         ephemeral: true,
         content: '❌ ' + e.message ?? 'Erreur'
       })

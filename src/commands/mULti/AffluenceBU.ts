@@ -50,7 +50,7 @@ export const AffluenceBU: Command = {
         ]
       })
     } catch (e: any) {
-      await interaction.reply({
+      await interaction.followUp({
         ephemeral: true,
         content: '❌ ' + e.message ?? 'Erreur'
       })

@@ -16,7 +16,7 @@ Pour intéragir avec moi, tu peux utiliser les slash commands:
 Conçu avec amour par maelgangloff#1907
 Ce bot est open-source et le code est disponible ici: https://github.com/maelgangloff/u2l-bot
 `
-    await interaction.reply({
+    await interaction.followUp({
       ephemeral: true,
       content
     })
