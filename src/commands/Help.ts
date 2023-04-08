@@ -16,8 +16,7 @@ Pour intéragir avec moi, tu peux utiliser les slash commands:
 - **/stan**: Prochains passages du réseau Stan 🚌
 
 Conçu avec amour par maelgangloff#1907
-Ce bot est open-source: https://github.com/maelgangloff/u2l-bot
-`
+Ce bot est open-source: https://github.com/maelgangloff/u2l-bot`
     await interaction.reply({
       ephemeral: true,
       content

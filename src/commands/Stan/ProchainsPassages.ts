@@ -71,7 +71,8 @@ export const ProchainsPassages: Command = {
             text: 'Source: www.reseau-stan.com'
           },
           timestamp: new Date()
-        })))
+        }))),
+        ephemeral: true
       })
     } catch (e: any) {
       return await interaction.reply({
