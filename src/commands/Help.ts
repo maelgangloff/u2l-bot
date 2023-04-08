@@ -1,7 +1,7 @@
 import { CommandInteraction, Client, ApplicationCommandType } from 'discord.js'
 import { Command } from '../Command'
 
-export const Hello: Command = {
+export const Help: Command = {
   name: 'help',
   description: 'Infos sur U2L Bot',
   type: ApplicationCommandType.ChatInput,
