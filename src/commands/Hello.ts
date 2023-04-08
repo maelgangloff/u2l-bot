@@ -10,10 +10,10 @@ export const Hello: Command = {
 Je suis **U2L-Bot**, un bot discord permettant d'accéder à certaines ressources de l'Université de Lorraine.
 
 Pour intéragir avec moi, tu peux utiliser les slash commands:
-  - **/bu**: S'informer sur l'affluence des Bibliothèques 📚
-  - **/ru**: Consulter les menus des Résto U' du Crous Lorraine :tropical_drink:
-  - **/annuaire**: Rechercher un personnel dans l'Annuaire 📖
-  - **/stan**: Les prochains passages du réseau Stan 🚌
+  - **/bu**: Affluence des Bibliothèques 📚
+  - **/ru**: Menus des Résto U' du Crous Lorraine :tropical_drink:
+  - **/annuaire**: Infos sur un personnel dans l'Annuaire 📖
+  - **/stan**: Prochains passages du réseau Stan 🚌
 
 Conçu avec amour par maelgangloff#1907
 Ce bot est open-source: <https://github.com/maelgangloff/u2l-bot>
