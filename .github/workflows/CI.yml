@@ -25,3 +25,6 @@ jobs:
 
       - name: Lint
         run: npx eslint src --ext .ts
+      
+      - name: Build
+        run: npx tsc -p tsconfig.json

@@ -7,7 +7,7 @@ export const Help: Command = {
   type: ApplicationCommandType.ChatInput,
   run: async (client: Client, interaction: CommandInteraction) => {
     const content = `Salut toi !
-Je suis **U2L Bot**, un bot discord permettant d'accéder à certaines ressources.
+Je suis **U2L Bot**, un bot Discord permettant d'accéder à certaines ressources (de l'Université de Lorraine).
 
 Pour intéragir avec moi, tu peux utiliser les slash commands:
 - **/bu** : Affluence des Bibliothèques 📚
