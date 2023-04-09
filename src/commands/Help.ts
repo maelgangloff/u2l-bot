@@ -17,7 +17,7 @@ Pour intéragir avec moi, tu peux utiliser les slash commands:
 - **/meteo** : La météo en temps réel ⛅
 
 Développé avec amour par <@357508678783336459> maelgangloff#1907
-Ce bot est open-source: https://github.com/maelgangloff/u2l-bot`
+Ce bot est open-source: <https://github.com/maelgangloff/u2l-bot>`
     await interaction.reply({
       ephemeral: true,
       content
