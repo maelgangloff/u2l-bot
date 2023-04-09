@@ -39,21 +39,21 @@ export const MeteoCommand: Command = {
               icon_url: 'https://openweathermap.org/img/wn/03d.png',
               url: 'https://openweathermap.org/'
             },
-            title: `⛅ Météo à ${ville} : ${capitalizeFirstLetter(meteo.weather[0]?.description ?? '')}`,
+            title: `⛅ Météo à ${meteo.name} : ${capitalizeFirstLetter(meteo.weather[0]?.description ?? '')}`,
             description: 'La météo en temps réel',
             fields: [
               {
-                name: 'Température actuelle',
+                name: 'Temp. actuelle',
                 value: `**${meteo.main.temp.toFixed(2)} °C**`,
                 inline: true
               },
               {
-                name: 'Température min',
+                name: 'Temp. minimale',
                 value: `**${meteo.main.temp_min.toFixed(2)} °C**`,
                 inline: true
               },
               {
-                name: 'Température max',
+                name: 'Temp. maximale',
                 value: `**${meteo.main.temp_max.toFixed(2)} °C**`,
                 inline: true
               },
