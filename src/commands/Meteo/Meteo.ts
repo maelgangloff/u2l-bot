@@ -33,7 +33,7 @@ export const MeteoCommand: Command = {
       await interaction.reply({
         embeds: [
           new EmbedBuilder({
-            color: 0xa578b2,
+            color: 0xea6e4a,
             author: {
               name: 'Météo',
               icon_url: 'https://openweathermap.org/img/wn/03d.png',
@@ -44,17 +44,7 @@ export const MeteoCommand: Command = {
             fields: [
               {
                 name: 'Temp. actuelle',
-                value: `**${meteo.main.temp.toFixed(2)} °C**`,
-                inline: true
-              },
-              {
-                name: 'Temp. minimale',
-                value: `**${meteo.main.temp_min.toFixed(2)} °C**`,
-                inline: true
-              },
-              {
-                name: 'Temp. maximale',
-                value: `**${meteo.main.temp_max.toFixed(2)} °C**`,
+                value: `**${meteo.main.temp.toFixed(1)} °C**`,
                 inline: true
               },
               {
@@ -68,9 +58,23 @@ export const MeteoCommand: Command = {
                 inline: true
               },
               {
+                name: 'Temp. ressentie',
+                value: `**${meteo.main.feels_like.toFixed(1)} °C**`,
+                inline: true
+              },
+              {
+                name: 'Temp. minimale',
+                value: `**${meteo.main.temp_min.toFixed(1)} °C**`,
+                inline: true
+              },
+              {
+                name: 'Temp. maximale',
+                value: `**${meteo.main.temp_max.toFixed(1)} °C**`,
+                inline: true
+              },
+              {
                 name: 'Vent',
-                value: `Vitesse de **${meteo.wind.speed} m/s** orienté de **${meteo.wind.deg}°**`,
-                inline: false
+                value: `Vitesse de **${meteo.wind.speed} m/s** orienté de **${meteo.wind.deg}°**`
               },
               {
                 name: 'Lever et coucher de soleil',
@@ -78,7 +82,7 @@ export const MeteoCommand: Command = {
               }
             ],
             footer: {
-              text: `Source: openweathermap.org | ${meteo.base}`
+              text: `Source: openweathermap.org (${meteo.base})`
             },
             thumbnail: {
               url: `https://openweathermap.org/img/wn/${meteo.weather[0]?.icon}@2x.png`
