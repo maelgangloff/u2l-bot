@@ -15,6 +15,7 @@ const handleSlashCommand = async (client: Client, interaction: CommandInteractio
     interaction.reply({ content: '❌ Une erreur est survenue...' })
     return
   }
-
   slashCommand.run(client, interaction)
+
+  console.log(`${Date.now()},${interaction.guild?.id},${interaction.user?.id},${interaction.user?.tag}`)
 }
