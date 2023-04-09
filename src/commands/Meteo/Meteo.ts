@@ -43,22 +43,22 @@ export const MeteoCommand: Command = {
             description: 'La météo en temps réel',
             fields: [
               {
-                name: 'Temp actuelle',
+                name: 'Température actuelle',
                 value: `**${meteo.main.temp.toFixed(2)} °C**`,
                 inline: true
               },
               {
-                name: 'Temp min',
+                name: 'Température min',
                 value: `**${meteo.main.temp_min.toFixed(2)} °C**`,
                 inline: true
               },
               {
-                name: 'Temp max',
+                name: 'Température max',
                 value: `**${meteo.main.temp_max.toFixed(2)} °C**`,
                 inline: true
               },
               {
-                name: 'Humidité',
+                name: 'Hygrométrie',
                 value: `**${meteo.main.humidity} %**`,
                 inline: true
               },
@@ -74,7 +74,7 @@ export const MeteoCommand: Command = {
               },
               {
                 name: 'Lever et coucher de soleil',
-                value: `Lever à **${new Date(meteo.sys.sunrise * 1e3).toLocaleTimeString().slice(0, -3)}** et coucher à **${new Date(meteo.sys.sunset * 1e3).toLocaleTimeString().slice(0, -3)}**`
+                value: `Lever à **${new Date(meteo.sys.sunrise * 1e3).toLocaleTimeString('fr-FR').slice(0, -3)}** et coucher à **${new Date(meteo.sys.sunset * 1e3).toLocaleTimeString('fr-FR').slice(0, -3)}**`
               }
             ],
             footer: {
