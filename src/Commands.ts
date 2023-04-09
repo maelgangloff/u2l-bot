@@ -7,10 +7,14 @@ import { CrousMenu } from './commands/mULti/CrousMenu'
 import { Factuel } from './commands/mULti/Factuel'
 import { AnnuaireCommand } from './commands/Annuaire/Annuaire'
 import { ProchainsPassages } from './commands/Stan/ProchainsPassages'
+import { MeteoCommand } from './commands/Meteo/Meteo'
 dotenv.config()
 
 const CommandLoginRequired: Command[] = [CurrentUser]
 const CommandLoginNotRequired: Command[] = [Help, AffluenceBU, CrousMenu, Factuel, AnnuaireCommand, ProchainsPassages]
 
-const withAuth = process.env.U2L_USERNAME && process.env.U2L_PASSWORD
-export const Commands: Command[] = withAuth ? [...CommandLoginNotRequired, ...CommandLoginRequired] : CommandLoginNotRequired
+const commandes: Command[] = CommandLoginNotRequired
+if (process.env.U2L_USERNAME && process.env.U2L_PASSWORD) commandes.push(...CommandLoginRequired)
+if (process.env.OPENWEATHERMAP_KEY) commandes.push(MeteoCommand)
+
+export const Commands = commandes

@@ -4,7 +4,7 @@ import { Annuaire, decryptData, Item } from 'univ-lorraine-api'
 
 export const AnnuaireCommand: Command = {
   name: 'annuaire',
-  description: "Rechercher quelqu'un dans l'annuaire",
+  description: "Rechercher un personnel dans l'annuaire",
   type: ApplicationCommandType.ChatInput,
   options: [
     {
