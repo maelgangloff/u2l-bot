@@ -1,5 +1,5 @@
 import { CommandInteraction, Client, ApplicationCommandType, EmbedBuilder, ApplicationCommandOptionType } from 'discord.js'
-import { Command } from '../../Command'
+import { Command } from '../Command'
 import { Annuaire, decryptData, Item } from 'univ-lorraine-api'
 
 export const AnnuaireCommand: Command = {

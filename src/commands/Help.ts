@@ -15,6 +15,7 @@ Pour intéragir avec moi, tu peux utiliser les slash commands:
 📖  **/annuaire** : Infos sur un personnel dans l'Annuaire
 🚌  **/stan** : Prochains passages du réseau Stan
 ⛅  **/meteo** : La météo en temps réel
+😃  **/help** : Afficher l'aide
 
 Développé avec amour ❤️ par <@357508678783336459> maelgangloff#1907
 Ce bot est open-source: <https://github.com/maelgangloff/u2l-bot>`
