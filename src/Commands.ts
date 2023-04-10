@@ -2,12 +2,12 @@ import { Command } from './Command'
 import { Help } from './commands/Help'
 import { AffluenceBU } from './commands/mULti/AffluenceBU'
 import { CurrentUser } from './commands/mULti/CurrentUser'
-import dotenv from 'dotenv'
 import { CrousMenu } from './commands/mULti/CrousMenu'
 import { Factuel } from './commands/mULti/Factuel'
 import { AnnuaireCommand } from './commands/Annuaire/Annuaire'
 import { ProchainsPassages } from './commands/Stan/ProchainsPassages'
 import { MeteoCommand } from './commands/Meteo/Meteo'
+import dotenv from 'dotenv'
 dotenv.config()
 
 const CommandLoginRequired: Command[] = [CurrentUser]
