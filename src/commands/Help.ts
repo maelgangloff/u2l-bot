@@ -19,8 +19,7 @@ export const Help: Command = {
           description: '',
           fields: [
             {
-              name: '',
-              value: `Salut toi !
+              name: '', value: `Salut toi !
 Je suis **U2L Bot**, un bot Discord permettant d'accéder à certaines ressources (de l'Université de Lorraine).
 
 Pour intéragir avec moi, tu peux utiliser les slash commands:`

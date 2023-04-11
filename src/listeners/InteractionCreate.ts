@@ -38,7 +38,7 @@ const handleSlashCommand = async (client: Client, interaction: CommandInteractio
   }
   console.log(`LOG(${pointData.applicationID}/${pointData.commandName}): ${pointData.timestamp},${pointData.guildID},${pointData.userID},${pointData.userTag},${pointData.channelID}`)
 
-  if (INFLUXDB_TOKEN && INFLUXDB_URL && INFLUXDB_ORG && INFLUXDB_BUCKET) {
+  if (INFLUXDB_TOKEN && INFLUXDB_URL && INFLUXDB_ORG && INFLUXDB_BUCKET && !['stats', 'help'].includes(pointData.commandName)) {
     try {
       const writeApi = new InfluxDB({
         url: INFLUXDB_URL,
