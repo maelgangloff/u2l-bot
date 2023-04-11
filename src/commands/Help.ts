@@ -32,7 +32,7 @@ Pour intéragir avec moi, tu peux utiliser les slash commands:`
             { name: '', value: "😃  **/help** : Afficher l'aide" },
             {
               name: '', value: `Développé avec amour ❤️ par <@357508678783336459> maelgangloff#1907
-            Ce bot est open-source: <https://github.com/maelgangloff/u2l-bot>`
+Ce bot est open-source: <https://github.com/maelgangloff/u2l-bot>`
             }
           ]
         })
