@@ -20,11 +20,20 @@ export const StatsCommand: Command = {
         token: INFLUXDB_TOKEN as string
       }).getQueryApi(INFLUXDB_ORG as string)
 
-      const query = `from(bucket: "${INFLUXDB_BUCKET}") |> range(start: 0)
-|> filter(fn: (r) => r["_measurement"] == "U2L_BOT__COMMAND_USED")
-|> count() |> group() |> unique(column: "command") |> sum()`
+      const totalUsage = (await queryApi.collectRows<{result: string, table: number, _value: number}>(`from(bucket: "${INFLUXDB_BUCKET}") |> range(start: 0)
+      |> filter(fn: (r) => r["_measurement"] == "U2L_BOT__COMMAND_USED")
+      |> count() |> group() |> unique(column: "command") |> sum()`))[0]._value
 
-      const totalUsage = (await queryApi.collectRows<{result: string, table: number, _value: number}>(query))[0]._value
+      const localUsage = (await queryApi.collectRows<any>(`from(bucket: "${INFLUXDB_BUCKET}") |> range(start: 0)
+      |> filter(fn: (r) => r["_measurement"] == "U2L_BOT__COMMAND_USED")
+      |> filter(fn: (r) => r["_value"] == "${interaction.guildId}")
+      |> count()
+      |> group()
+      |> sum()`))[0]?._value as number | undefined
+
+      const fields = []
+      if (totalUsage) fields.push({ name: ':mouse_three_button: Intéractions totales', value: `**${totalUsage}**`, inline: true })
+      if (localUsage) fields.push({ name: ':mouse_three_button: Intéractions sur ce serveur', value: `**${localUsage}**`, inline: true })
 
       await interaction.reply({
         ephemeral: true,
@@ -32,15 +41,13 @@ export const StatsCommand: Command = {
           new EmbedBuilder({
             color: 0xd30971,
             author: {
-              name: 'Stats',
+              name: 'U2L Bot',
               icon_url: 'https://multi.univ-lorraine.fr/img/ul-logo-mini.png',
               url: 'https://github.com/maelgangloff/u2l-bot'
             },
             title: ':chart_with_upwards_trend: Statistiques',
             description: "Les statistiques d'utilisation du Bot",
-            fields: [
-              { name: ':mouse_three_button: Intéractions', value: `**${totalUsage}**`, inline: true }
-            ],
+            fields,
             footer: {
               text: 'Source: Base de données InfluxDB'
             },
