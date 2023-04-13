@@ -50,7 +50,7 @@ const handleSlashCommand = async (client: Client, interaction: CommandInteractio
         .stringField('user_id', pointData.userID)
         .stringField('user_tag', pointData.userTag)
         .stringField('channel_id', pointData.channelID)
-        .tag('command', pointData.commandName)
+        .stringField('command', pointData.commandName)
         .tag('application_id', pointData.applicationID)
         .timestamp(new Date(pointData.timestamp))
       )
