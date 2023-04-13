@@ -47,7 +47,8 @@ export const AffluenceBU: Command = {
             },
             timestamp: new Date()
           })
-        ]
+        ],
+        ephemeral: true
       })
     } catch (e: any) {
       await interaction.reply({
