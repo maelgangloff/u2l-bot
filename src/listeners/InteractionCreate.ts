@@ -46,11 +46,11 @@ const handleSlashCommand = async (client: Client, interaction: CommandInteractio
       }).getWriteApi(INFLUXDB_ORG, INFLUXDB_BUCKET)
 
       writeApi.writePoint(new Point('U2L_BOT__COMMAND_USED')
-        .stringField('guild', pointData.guildID)
+        .stringField('guild', pointData.guildID ?? '')
         .stringField('user_id', pointData.userID)
         .stringField('user_tag', pointData.userTag)
         .stringField('channel_id', pointData.channelID)
-        .stringField('command', pointData.commandName)
+        .tag('command', pointData.commandName)
         .tag('application_id', pointData.applicationID)
         .timestamp(new Date(pointData.timestamp))
       )
