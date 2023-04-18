@@ -3,12 +3,12 @@
 ## Fonctionnement
 Ce bot Discord permet l'accès aux données fournies par certaines API.  
 Les slash commands disponibles sont:
-📚  **/bu** : Affluence des Bibliothèques Universitaires
-🍔  **/ru** : Menus des Résto U' du Crous Lorraine
-📖  **/annuaire** : Infos sur un personnel dans l'Annuaire
-🚌  **/stan** : Prochains passages du réseau Stan
-⛅  **/meteo** : La météo en temps réel
-😃  **/help** : Afficher l'aide
+- 📚  **/bu** : Affluence des Bibliothèques Universitaires
+- 🍔  **/ru** : Menus des Résto U' du Crous Lorraine
+- 📖  **/annuaire** : Infos sur un personnel dans l'Annuaire
+- 🚌  **/stan** : Prochains passages du réseau Stan
+- ⛅  **/meteo** : La météo en temps réel
+- 😃  **/help** : Afficher l'aide
 
 ## Installation
 1. Cloner le dépôt Git
